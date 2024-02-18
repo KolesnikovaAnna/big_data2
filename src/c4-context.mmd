@@ -1,0 +1,17 @@
+C4Context
+    accTitle: TrueFriends
+    accDescr: Context
+
+    Person(user, "Пользователь", "Пользователь использует МП для планирования досуга")
+    Container_Boundary(tf, "TrueFriends") {
+        Container_Ext(mobile_app, "Мобильное приложение", "Swift", "Мобильное приложение,в котором пользователь может подобрать себе мероприятие")
+        ContainerDb(database, "База данных", "SQL Database", "Хранит сырые данныемероприятий и мест из различных источников и обработанные данные")
+        Container_Ext(ml, "ML модели", "Категоризируют места и мероприятия")
+    }
+    System_Ext(tf_system, "TrueFriends System", "Хранит ключевую информацию")
+
+    Rel(user, mobile_app, "Использует")
+    Rel(mobile_app, database, "Читает данные")
+    Rel(mobile_app, ml, "Использует для категоризации")
+    Rel(mobile_app, tf_system, "Хранит нформацию")
+    Rel_R(ml, database, "Использует данные для дообучения, данные хранятся в HDFS")

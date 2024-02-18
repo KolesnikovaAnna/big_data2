@@ -1,0 +1,14 @@
+requirementDiagram
+
+    requirement Trading Requirement {
+        id: 1
+        text: Make online trading
+        risk: high
+        verifymethod: test
+    }
+
+    element Shop System {
+        type: Software
+    }
+
+    Shop System - satisfies -> Trading Requirement
